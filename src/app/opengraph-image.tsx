@@ -29,7 +29,7 @@ export default function OpengraphImage() {
             textTransform: "uppercase",
           }}
         >
-          <span>abhiyash.com</span>
+          <span>abhiyash.dev</span>
           <span>{site.focus}</span>
         </div>
 

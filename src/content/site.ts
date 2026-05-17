@@ -4,7 +4,7 @@ export const site = {
   role: "Software Engineer",
   focus: "Full-stack · ML · Infrastructure",
   location: "East Lansing, Michigan",
-  url: "https://abhiyash.com",
+  url: "https://abhiyash.dev",
 
   tagline: "I build full-stack systems that ship to real users.",
 
