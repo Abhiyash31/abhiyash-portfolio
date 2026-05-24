@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { projects, getProject, projectSlugs } from "@/content/projects";
 import { site } from "@/content/site";
 import { Reveal } from "@/components/Reveal";
+import { ProjectHero, ProjectGallery, ProjectVideo } from "@/components/ProjectMedia";
 
 export const dynamicParams = false;
 
@@ -62,13 +63,15 @@ export default async function ProjectPage({
           <p className="mt-12 font-mono text-xs uppercase tracking-[0.2em] text-accent">
             {project.context}
           </p>
-          <h1 className="mt-6 font-display text-3xl leading-[1.08] tracking-tight text-text sm:text-5xl">
+          <h1 className="mt-6 font-display text-[1.65rem] leading-[1.08] tracking-tight text-text sm:text-4xl">
             {project.title}
           </h1>
-          <p className="mt-5 max-w-2xl text-xl leading-relaxed text-muted">
+          <p className="mt-5 max-w-2xl text-[1.4rem] leading-relaxed text-muted">
             {project.tagline}
           </p>
         </Reveal>
+
+        <ProjectHero media={project.media} title={project.title} />
 
         <Reveal delay={0.1}>
           <dl className="mt-12 grid grid-cols-2 gap-y-6 border-y border-line py-8 sm:grid-cols-4">
@@ -89,14 +92,14 @@ export default async function ProjectPage({
         </Reveal>
 
         <Reveal delay={0.05}>
-          <p className="mt-16 font-display text-2xl leading-snug text-text sm:text-3xl">
+          <p className="mt-16 font-display text-xl leading-snug text-text sm:text-2xl">
             {project.summary}
           </p>
         </Reveal>
 
         <Section label="The problem">
           {project.problem.map((p, i) => (
-            <p key={i} className="mt-4 text-lg leading-relaxed text-muted">
+            <p key={i} className="mt-4 text-xl leading-relaxed text-muted">
               {p}
             </p>
           ))}
@@ -105,7 +108,7 @@ export default async function ProjectPage({
         <Section label="Approach">
           <ul className="mt-4 flex flex-col gap-4">
             {project.approach.map((a, i) => (
-              <li key={i} className="flex gap-4 text-lg leading-relaxed text-muted">
+              <li key={i} className="flex gap-4 text-xl leading-relaxed text-muted">
                 <span className="mt-3 h-px w-5 shrink-0 bg-accent" />
                 <span>{a}</span>
               </li>
@@ -116,13 +119,16 @@ export default async function ProjectPage({
         <Section label={building ? "What it proves" : "Impact"}>
           <ul className="mt-4 flex flex-col gap-4">
             {project.impact.map((a, i) => (
-              <li key={i} className="flex gap-4 text-lg leading-relaxed text-text">
+              <li key={i} className="flex gap-4 text-xl leading-relaxed text-text">
                 <span className="mt-3 h-px w-5 shrink-0 bg-accent" />
                 <span>{a}</span>
               </li>
             ))}
           </ul>
         </Section>
+
+        <ProjectVideo media={project.media} />
+        <ProjectGallery media={project.media} />
 
         <Section label="Stack">
           <div className="mt-4 grid gap-x-10 gap-y-8 sm:grid-cols-2">
@@ -172,7 +178,7 @@ export default async function ProjectPage({
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-faint">
                 Next
               </p>
-              <p className="mt-2 font-display text-2xl text-text transition-colors group-hover:text-accent sm:text-3xl">
+              <p className="mt-2 font-display text-xl text-text transition-colors group-hover:text-accent sm:text-2xl">
                 {next.title}
               </p>
             </div>

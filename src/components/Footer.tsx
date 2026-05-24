@@ -53,7 +53,7 @@ export function Footer() {
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-faint">
           ✦ Contact
         </p>
-        <h2 className="mt-6 max-w-3xl font-display text-4xl leading-[1.05] tracking-tight text-text sm:text-6xl">
+        <h2 className="mt-6 max-w-3xl font-display text-3xl leading-[1.05] tracking-tight text-text sm:text-5xl">
           Let’s build something that has to{" "}
           <span className="italic text-accent">work</span>.
         </h2>

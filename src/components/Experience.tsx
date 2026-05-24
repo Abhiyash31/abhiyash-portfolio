@@ -27,11 +27,11 @@ export function Experience() {
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-display text-2xl text-text">{job.role}</h3>
+                  <h3 className="font-display text-xl text-text">{job.role}</h3>
                   <p className="mt-1 text-muted">{job.org}</p>
                   <ul className="mt-5 flex flex-col gap-3">
                     {job.points.map((pt, j) => (
-                      <li key={j} className="flex gap-3 text-muted">
+                      <li key={j} className="flex gap-3 text-lg text-muted">
                         <span className="mt-2.5 h-px w-4 shrink-0 bg-accent" />
                         <span className="leading-relaxed">{pt}</span>
                       </li>

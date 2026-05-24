@@ -1,5 +1,11 @@
 export type ProjectStatus = "shipped" | "building";
 
+export type ProjectMedia = {
+  cover?: string;
+  gallery?: { src: string; alt: string }[];
+  video?: { src: string; poster?: string; caption?: string };
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -14,6 +20,7 @@ export type Project = {
   approach: string[];
   impact: string[];
   stack: { group: string; items: string[] }[];
+  media?: ProjectMedia;
   links?: { label: string; href: string }[];
 };
 
@@ -51,37 +58,47 @@ export const projects: Project[] = [
       { group: "Backend & Data", items: ["PostgreSQL", "VictoriaMetrics", "REST", "better-auth"] },
       { group: "Infra", items: ["Docker Compose", "Caddy (auto-TLS)", "VAPID Web Push", "SMTP"] },
     ],
-    links: [{ label: "Client engagement — walkthrough on request", href: "/#contact" }],
+    media: {
+      cover: "/work/capstone/artwork-1.png",
+      gallery: [
+        { src: "/work/capstone/artwork-1.png", alt: "Predictive maintenance dashboard — machine overview" },
+        { src: "/work/capstone/artwork-2.png", alt: "Predictive maintenance dashboard — risk trend view" },
+        { src: "/work/capstone/artwork-3.png", alt: "Predictive maintenance dashboard — alert + report export" },
+      ],
+    },
+    links: [
+      { label: "MSU capstone team page (with walkthrough video)", href: "https://capstone.cse.msu.edu/2026-01/projects/akzonobel/" },
+    ],
   },
   {
     slug: "movie-recommender",
-    title: "Movie Recommender",
+    title: "CineMatch — Movie Recommender",
     tagline: "Collaborative filtering, evaluated honestly.",
     year: "2026",
     status: "shipped",
     featured: true,
-    role: "Full-stack + data",
-    context: "Self-directed · MovieLens dataset",
+    role: "Backend + data (team of 4)",
+    context: "Group project · MovieLens dataset",
     summary:
-      "A full-stack recommender on MovieLens (610 users, 100K+ ratings) comparing user-based and item-based collaborative filtering — measured, not just shipped.",
+      "A full-stack recommender (CineMatch) on MovieLens — 610 users, 9,742 movies, 100K+ ratings — comparing user-based and item-based collaborative filtering with measured accuracy and coverage.",
     problem: [
-      "Most student recommenders stop at “it returns movies.” I wanted one that could answer a harder question: which collaborative-filtering approach is actually better on this data, and by how much?",
+      "Modern platforms drown users in content, and the typical student recommender stops at ‘it returns movies.’ Our team wanted one that could answer a harder question: which collaborative-filtering approach is actually better on this data, and by how much?",
     ],
     approach: [
-      "Built a FastAPI + PostgreSQL backend serving top-K neighbor predictions over a normalized schema (users, movies, ratings, tags, links).",
+      "Built a FastAPI + SQLite backend serving top-K neighbor predictions over a normalized schema (users, movies, ratings, tags, links).",
       "Implemented both user-based and item-based collaborative filtering with Pearson and cosine similarity over mean-centered ratings.",
-      "Cleaned the data the way it actually needs cleaning: dedupe, keep-latest on repeat ratings, filter low-activity users/items, and a time-aware train/test split so the test set represents future behavior.",
-      "Added a baseline correction (global mean + user bias + item bias) and evaluated with RMSE / MAE plus Precision@K rather than eyeballing results.",
-      "Built the frontend in React 19 + Vite + Tailwind against the REST API.",
+      "Cleaned the data the way it actually needs cleaning: dedupe, keep-latest on repeat ratings, filter low-activity users/items, parse the release year out of titles, normalize genres, and a time-aware train/test split so the test set represents future behavior.",
+      "Added a baseline correction (global mean + user bias + item bias) and evaluated with RMSE, MAE, Precision@K, and coverage — measured, not eyeballed.",
+      "Built the frontend in React + Vite + Tailwind against the REST API.",
     ],
     impact: [
-      "Side-by-side, measured comparison of user- vs item-based CF on a held-out, time-aware split.",
-      "Clean separation: typed REST API, normalized Postgres schema, reproducible preprocessing.",
+      "Side-by-side, measured comparison on a held-out time-aware split: item-based hit RMSE ≈ 0.891 / MAE ≈ 0.666 at 81.5% coverage, user-based hit RMSE ≈ 0.905 / MAE ≈ 0.689 at 90.8% coverage — the accuracy-vs-coverage trade-off you only see if you actually measure it.",
+      "Clean separation: typed REST API, normalized SQLite schema, reproducible preprocessing pipeline.",
     ],
     stack: [
-      { group: "Frontend", items: ["React 19", "Vite", "Tailwind"] },
-      { group: "Backend", items: ["FastAPI", "PostgreSQL", "REST"] },
-      { group: "Data / ML", items: ["NumPy", "Pandas", "Collaborative filtering", "RMSE / MAE / P@K"] },
+      { group: "Frontend", items: ["React", "Vite", "Tailwind"] },
+      { group: "Backend", items: ["FastAPI", "SQLite", "REST"] },
+      { group: "Data / ML", items: ["NumPy", "Pandas", "Collaborative filtering", "RMSE / MAE / P@K / coverage"] },
     ],
     links: [{ label: "GitHub", href: "https://github.com/Abhiyash31" }],
   },
@@ -139,31 +156,99 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "backend-systems-coursework",
-    title: "Backend & Database Systems",
-    tagline: "Auth, SQL, and microservices done by hand.",
+    slug: "auth-api-from-scratch",
+    title: "Auth API + JWT, from scratch",
+    tagline: "An authentication system rebuilt without the libraries.",
     year: "2025",
     status: "shipped",
     featured: false,
-    role: "Engineer",
-    context: "Database Systems · Web Application Architecture",
+    role: "Solo · coursework",
+    context: "Database Systems · individual project",
     summary:
-      "A set of from-scratch backend builds: JWT/HMAC auth APIs, a relational recipe app, and a Dockerized microservices reservation system.",
+      "A Flask + SQLite authentication API where the JWTs, password hashing, and SQL safety were all written by hand — no auth library, no ORM.",
     problem: [
-      "Coursework that I treated as backend practice: write the auth, design the schema, split the services, containerize it.",
+      "Most students reach for a library the moment an interviewer says ‘JWT.’ The point of building this from scratch was to actually understand the bytes: how the token is base64-url-encoded, how the HMAC-SHA-256 signature is computed, and why parameterized queries are non-negotiable.",
+      "Graded against an instructor test suite that intentionally tried to break the API with SQL-injection attacks and tampered JWTs — if either succeeded, the project scored zero.",
     ],
     approach: [
-      "Built token-authenticated REST APIs in Flask with JWT/HMAC, hand-written parameterized SQL, and proper migrations.",
-      "Designed normalized relational schemas and split a reservation system into users / availability / reservations / payments microservices, each independently Dockerized with Docker Compose.",
-      "Deployed Flask services to Google Cloud with a GitLab CI pipeline.",
+      "Designed a SQLite schema with uniqueness constraints on usernames and emails, plus a password-history table so a user can never reuse a past password — the full MSU policy, enforced server-side.",
+      "Hashed passwords with SHA-256 over a per-user salt via Python’s hashlib; no plaintext ever touched disk, and the salt was reused across all of a user’s historical passwords so the history check actually worked.",
+      "Built JWTs by hand: base64-url-safe header + payload, signed with HMAC-SHA-256 via Python’s hmac module, then verified on every authorized request against the same key.",
+      "Wrote every SQL statement as a parameterized query — single-quote, UNION-extraction, and comment-injection probes all bounced.",
+      "Wrapped every connection in try/except with explicit close() in the failure path so a poisoned test couldn’t leave the database file locked for the next case.",
     ],
     impact: [
-      "Covers the backend fundamentals interviewers actually probe: auth correctness, schema design, service boundaries, containers.",
+      "Cleared the instructor’s injection test suite — including the cases that silently pass vulnerable implementations.",
+      "Demonstrates the cryptographic primitives behind auth aren’t a black box for me.",
     ],
     stack: [
-      { group: "Backend", items: ["Python", "Flask", "FastAPI"] },
-      { group: "Data", items: ["PostgreSQL", "SQLite", "Parameterized SQL"] },
-      { group: "Infra", items: ["Docker Compose", "Caddy", "GitLab CI", "Google Cloud"] },
+      { group: "Backend", items: ["Python", "Flask"] },
+      { group: "Data", items: ["SQLite", "Parameterized SQL"] },
+      { group: "Crypto", items: ["hashlib (SHA-256)", "hmac", "base64", "JWT by hand"] },
+    ],
+  },
+  {
+    slug: "recipes-api-social-graph",
+    title: "Recipes API with a social graph",
+    tagline: "Follow, like, search — relational from the ground up.",
+    year: "2025",
+    status: "shipped",
+    featured: false,
+    role: "Solo · coursework",
+    context: "Database Systems · individual project",
+    summary:
+      "A recipe-site backend in Flask + SQLite with following, likes, ingredient-aware search, and cascading account deletion — built on the auth stack from the previous project.",
+    problem: [
+      "Project 2 layered a real social graph (users → follow → users, users → like → recipes) onto the auth API, and added the kind of search that forces you to think about your schema: ‘find recipes that only use ingredients I have.’",
+      "On top of that: delete a user, and every recipe, like, and follow they created has to evaporate atomically.",
+    ],
+    approach: [
+      "Promoted the JWT to live in the HTTP Authorization header instead of a POST parameter, so every endpoint reads identity the way real APIs do.",
+      "Modeled the social graph with a many-to-many follows table and a recipe ↔ ingredient join table, with foreign keys and ON DELETE CASCADE so a user delete unwinds the graph in one transaction (with SQLite foreign_keys = ON set per connection).",
+      "Implemented three search modes in /search: a follow-aware feed (recent recipes from users you follow), a top-N popularity ranking by like count, and an ingredient-subset search (recipes whose ingredients are entirely contained in the user’s pantry).",
+      "Wrote a dynamic recipe-view endpoint that returns only the fields the caller asks for — name, description, like count, ingredients — so the API is honest about what it transmits.",
+      "Kept every query parameterized, and put DB access inside try/except/close blocks so a bad request couldn’t leave a locked database for the next test case.",
+    ],
+    impact: [
+      "A non-trivial relational schema with real cascading deletes and three meaningfully different search modes — beyond the usual ‘CRUD a single table’ assignment.",
+      "Reuses the from-scratch JWT plumbing, now read from the HTTP header instead of a POST parameter.",
+    ],
+    stack: [
+      { group: "Backend", items: ["Python", "Flask"] },
+      { group: "Data", items: ["SQLite", "Parameterized SQL", "Cascading deletes"] },
+      { group: "Auth", items: ["JWT (HS256)", "HMAC", "SHA-256"] },
+    ],
+  },
+  {
+    slug: "rideshare-microservices",
+    title: "Ride-share microservices on Docker",
+    tagline: "Four services, four databases, one Docker network.",
+    year: "2025",
+    status: "shipped",
+    featured: false,
+    role: "Solo · coursework",
+    context: "Database Systems · individual project",
+    summary:
+      "A ride-sharing backend split across four Flask microservices — users, driver availability, reservations, and payments — each in its own container, with its own SQLite database, talking over a Docker network.",
+    problem: [
+      "Project 3 took the auth and recipes work and broke it across service boundaries. Payments can’t see the user table. The reservations service has to ask the user service who someone is. And a failed inter-service call can’t leave money in the wrong account.",
+    ],
+    approach: [
+      "Designed four services on dedicated ports — 9000 users, 9001 availability, 9002 reservations, 9003 payments — each with its own SQLite database (user.db / listings.db / reservations.db / payments.db) and its own .sql init script.",
+      "Wrote a Dockerfile per service (Dockerfile.users, .availability, .reservations, .payments) and a single compose.yaml that puts all four on the same Docker network so containers can resolve each other by name.",
+      "When a passenger reserves a driver, the reservations service authenticates the JWT, calls the user service to confirm role and identity, calls the payments service to move fare from passenger to driver, then deletes the driver’s availability listing — failing closed at every step.",
+      "Enforced the social rule on ratings across services: a passenger can only rate a driver they had a confirmed reservation with (and vice versa), checked by cross-service calls between the user and reservations services.",
+      "Added /clear on every service so the instructor’s test suite can reset all four databases between tests without restarting any container.",
+    ],
+    impact: [
+      "A clean four-service split with database-per-service, inter-service authorization, and an atomic payment transfer across service boundaries.",
+      "Reproducible with `docker compose up` — the same shape as a production microservice deploy.",
+    ],
+    stack: [
+      { group: "Services", items: ["Python", "Flask", "requests"] },
+      { group: "Data", items: ["SQLite ×4", "Per-service schemas"] },
+      { group: "Infra", items: ["Docker", "Docker Compose", "Docker networks"] },
+      { group: "Auth", items: ["JWT (HS256)", "Cross-service authz"] },
     ],
   },
 

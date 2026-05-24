@@ -7,8 +7,9 @@ import { projects, type Project } from "@/content/projects";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function SelectedWork() {
-  const shipped = projects.filter((p) => p.status === "shipped");
-  const building = projects.filter((p) => p.status === "building");
+  const featured = projects.filter((p) => p.featured);
+  const totalShipped = projects.filter((p) => p.status === "shipped").length;
+  const totalBuilding = projects.filter((p) => p.status === "building").length;
 
   return (
     <section id="work" className="scroll-mt-24 px-6 py-28 sm:px-10 sm:py-36">
@@ -18,30 +19,27 @@ export function SelectedWork() {
             ✦ Selected Work
           </p>
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-faint">
-            {String(shipped.length).padStart(2, "0")} shipped
+            {String(totalShipped).padStart(2, "0")} shipped · {String(totalBuilding).padStart(2, "0")} building
           </p>
         </div>
 
         <ul>
-          {shipped.map((p, i) => (
-            <Row key={p.slug} project={p} index={i + 1} />
+          {featured.map((p, i) => (
+            <Row key={p.slug} project={p} index={i + 1} building={p.status === "building"} />
           ))}
         </ul>
 
-        <div className="mt-24 flex items-end justify-between border-b border-line pb-6">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-faint">
-            ✦ Currently Building
-          </p>
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-faint">
-            shipping through 2026
-          </p>
+        <div className="mt-14 flex justify-center">
+          <Link
+            href="/work"
+            className="group inline-flex items-center gap-3 rounded-full border border-line-strong px-6 py-3 font-mono text-xs uppercase tracking-[0.18em] text-text transition-colors hover:border-accent hover:text-accent"
+          >
+            See all work
+            <span className="transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
+          </Link>
         </div>
-
-        <ul>
-          {building.map((p, i) => (
-            <Row key={p.slug} project={p} index={i + 1} building />
-          ))}
-        </ul>
       </div>
     </section>
   );
@@ -76,10 +74,10 @@ function Row({
         </span>
 
         <div className="min-w-0 sm:pl-2">
-          <h3 className="font-display text-2xl leading-tight tracking-tight text-text transition-transform duration-500 ease-out group-hover:translate-x-2 sm:text-4xl">
+          <h3 className="font-display text-xl leading-tight tracking-tight text-text transition-transform duration-500 ease-out group-hover:translate-x-2 sm:text-3xl">
             {project.title}
           </h3>
-          <p className="mt-3 max-w-xl text-muted">{project.tagline}</p>
+          <p className="mt-3 max-w-xl text-lg text-muted">{project.tagline}</p>
           <div className="mt-5 flex flex-wrap gap-2">
             {project.stack.flatMap((g) => g.items).slice(0, 5).map((t) => (
               <span

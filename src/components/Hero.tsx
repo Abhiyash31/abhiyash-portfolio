@@ -44,7 +44,7 @@ export function Hero() {
           <span>{site.location}</span>
         </motion.div>
 
-        <h1 className="mt-9 max-w-4xl font-display text-[2.05rem] font-medium leading-[1.08] tracking-tight text-text sm:text-5xl lg:text-6xl">
+        <h1 className="mt-9 max-w-4xl font-display text-[1.75rem] font-medium leading-[1.08] tracking-tight text-text sm:text-4xl lg:text-[3.25rem]">
           {words.map((word, i) => (
             <span key={i} className="inline-block overflow-hidden pb-[0.1em] align-bottom">
               <motion.span
@@ -68,7 +68,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.7 }}
-          className="mt-8 max-w-xl text-lg leading-relaxed text-muted"
+          className="mt-8 max-w-xl text-xl leading-relaxed text-muted"
         >
           {site.heroSub}
         </motion.p>

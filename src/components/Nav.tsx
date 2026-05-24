@@ -102,7 +102,7 @@ export function Nav() {
                 <Link
                   href={item.href}
                   onClick={goTo(item.href)}
-                  className="font-display text-5xl text-text"
+                  className="font-display text-4xl text-text"
                 >
                   {item.label}
                 </Link>
