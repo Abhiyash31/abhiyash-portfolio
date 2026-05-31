@@ -13,7 +13,7 @@ export function ProjectHero({ media, title }: { media?: ProjectMediaType; title:
         <div className="relative aspect-[16/9] w-full bg-elevated">
           <Image
             src={media.cover}
-            alt={`${title} — cover artwork`}
+            alt={`${title}, cover artwork`}
             fill
             sizes="(max-width: 1024px) 100vw, 960px"
             priority

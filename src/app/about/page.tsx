@@ -52,7 +52,7 @@ export default function AboutPage() {
               />
             </div>
             <p className="mt-5 font-mono text-xs uppercase tracking-[0.18em] text-faint">
-              {site.name} — {site.location}
+              {site.name} · {site.location}
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
@@ -66,7 +66,7 @@ export default function AboutPage() {
                 target="_blank"
                 className="rounded-full border border-line px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-muted transition-colors hover:border-line-strong hover:text-text"
               >
-                Résumé ↗
+                Resume ↗
               </a>
             </div>
           </Reveal>
@@ -93,7 +93,7 @@ export default function AboutPage() {
                 </p>
                 <p className="mt-3 text-lg text-text">
                   {education.degree}
-                  <span className="text-muted"> — {education.school}</span>
+                  <span className="text-muted"> · {education.school}</span>
                 </p>
                 <p className="mt-1 font-mono text-sm text-muted">
                   {education.period} · {education.detail}

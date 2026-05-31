@@ -42,7 +42,11 @@ next-env.d.ts
 
 # IDE
 /.idea/
+/.claude/
 
 # local-only docs / source PDFs not for public repo
 *.pdf
 !public/**/*.pdf
+
+# design system planning (local only)
+/design-system/

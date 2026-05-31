@@ -1,22 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0a0a0b;
-  --color-surface: #121215;
-  --color-elevated: #1a1a1f;
-  --color-text: #f4f3ef;
-  --color-muted: #9a9aa2;
-  --color-faint: #5f5f68;
-  --color-line: rgba(255, 255, 255, 0.09);
-  --color-line-strong: rgba(255, 255, 255, 0.16);
-  --color-accent: #e0a45c;
-  --color-accent-soft: rgba(224, 164, 92, 0.14);
+  --color-bg: #0a0a0a;
+  --color-surface: #131313;
+  --color-elevated: #161616;
+  --color-text: #e5e2e1;
+  --color-muted: #a3a3a3;
+  --color-faint: #6e6e76;
+  --color-line: #262626;
+  --color-line-strong: #383838;
+  --color-line-warm: rgba(204, 255, 0, 0.18);
+  --color-accent: #ccff00;
+  --color-accent-soft: rgba(204, 255, 0, 0.12);
+  --color-blue: #007aff;
+  --color-blue-soft: rgba(0, 122, 255, 0.14);
+  --color-signal: #ccff00;
+  --color-signal-soft: rgba(204, 255, 0, 0.14);
 
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-fraunces);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-display: var(--font-geist-sans);
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 :root {
@@ -70,8 +76,35 @@ button {
 }
 
 .font-display {
-  font-feature-settings: "ss01";
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.border-glow {
+  transition: border-color 0.3s var(--ease-out-expo), box-shadow 0.3s var(--ease-out-expo);
+}
+.border-glow:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent-soft), 0 0 24px rgba(204, 255, 0, 0.08);
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: ticker 32s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-ticker {
+    animation: none;
+  }
 }
 
 .grain {

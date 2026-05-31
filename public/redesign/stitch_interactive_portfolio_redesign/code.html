@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Abhiyash Singh | Engineer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Geist:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#b6c9d8",
+                        "on-surface": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "outline": "#8e9379",
+                        "tertiary-fixed": "#d2e5f5",
+                        "on-error": "#690005",
+                        "secondary-fixed": "#d8e2ff",
+                        "surface": "#0A0A0A",
+                        "on-surface-variant": "#c4c9ac",
+                        "on-primary-container": "#556d00",
+                        "surface-glass": "rgba(255, 255, 255, 0.03)",
+                        "on-secondary-container": "#00285c",
+                        "primary-fixed-dim": "#abd600",
+                        "on-tertiary": "#21323e",
+                        "secondary": "#adc6ff",
+                        "on-primary": "#283500",
+                        "primary-fixed": "#c3f400",
+                        "tertiary-container": "#d2e5f5",
+                        "border-subtle": "#262626",
+                        "on-tertiary-fixed": "#0b1d29",
+                        "surface-container-highest": "#353534",
+                        "on-background": "#e5e2e1",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#e5e2e1",
+                        "error": "#ffb4ab",
+                        "background": "#0A0A0A",
+                        "inverse-primary": "#506600",
+                        "surface-dim": "#0A0A0A",
+                        "text-muted": "#A3A3A3",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-bright": "#3a3939",
+                        "surface-container": "#201f1f",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-tertiary-fixed-variant": "#374956",
+                        "on-secondary-fixed-variant": "#004493",
+                        "surface-container-low": "#1c1b1b",
+                        "electric-blue": "#007AFF",
+                        "on-tertiary-container": "#556774",
+                        "secondary-container": "#4b8eff",
+                        "on-primary-fixed-variant": "#3c4d00",
+                        "outline-variant": "#444933",
+                        "surface-tint": "#abd600",
+                        "surface-variant": "#353534",
+                        "surface-raised": "#161616",
+                        "cyber-lime": "#CCFF00",
+                        "primary-container": "#c3f400",
+                        "on-secondary": "#002e69",
+                        "on-primary-fixed": "#161e00",
+                        "tertiary": "#ffffff",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary-fixed": "#001a41",
+                        "primary": "#ffffff",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "section-gap": "128px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Geist"],
+                        "body-base": ["Geist"],
+                        "display-lg-mobile": ["Geist"],
+                        "code-sm": ["JetBrains Mono"],
+                        "headline-md": ["Geist"],
+                        "label-caps": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-base": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "code-sm": ["13px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-header {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(12px);
+        }
+        .project-card:hover .project-image {
+            transform: scale(1.02);
+        }
+        .border-glow:hover {
+            border-color: #CCFF00;
+            box-shadow: 0 0 15px rgba(204, 255, 0, 0.1);
+        }
+        ::selection {
+            background: #CCFF00;
+            color: #0A0A0A;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-base selection:bg-cyber-lime selection:text-background">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full bg-surface-glass border-b border-border-subtle backdrop-blur-md z-50">
+<div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<img alt="Logo" class="w-8 h-8 rounded-lg border border-border-subtle" src="https://lh3.googleusercontent.com/aida/ADBb0uifT9AK6fMBq4E2jO7NIKdrDGEACSk25BOy9ZeFdgdDMEe2k3SJ54HYcoqEexbqZnB2SkcOIJZOWT_mQtYNXMIdQUZjXMTuVZB_Wxe1jM7WcEOi-9W3TN8wzB4hdOzLfdSyDDXZfzHi5Hnxq3DXwQing4zpXRKxj4Gm4dSpCqOF8eIezRCGF6EAtpdCr2hlf7CkflYNQr80dIy6KORNmSukiIXsCvY5qFCvfDLtqka7V3WdC1MRAl0p0BWC"/>
+<span class="font-code-sm text-code-sm font-bold text-on-surface">ABHIYASH SINGH v1.0</span>
+</div>
+<div class="hidden md:flex gap-8">
+<a class="font-label-caps text-label-caps text-cyber-lime border-b-2 border-cyber-lime pb-1" href="#work">WORK</a>
+<a class="font-label-caps text-label-caps text-on-surface hover:text-electric-blue transition-colors" href="#about">ABOUT</a>
+<a class="font-label-caps text-label-caps text-on-surface hover:text-electric-blue transition-colors" href="#contact">CONTACT</a>
+<a class="font-label-caps text-label-caps text-on-surface hover:text-electric-blue transition-colors" href="#">RÉSUMÉ</a>
+</div>
+<button class="bg-cyber-lime text-background font-label-caps text-label-caps px-4 py-2 hover:opacity-80 active:scale-95 transition-all">
+                GET IN TOUCH
+            </button>
+</div>
+</nav>
+<main class="pt-32">
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-gutter mb-section-gap">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+<div class="md:col-span-7">
+<div class="flex items-center gap-3 mb-6">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyber-lime opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-cyber-lime"></span>
+</span>
+<span class="font-code-sm text-code-sm text-cyber-lime">SYSTEM STATUS: OPERATIONAL</span>
+</div>
+<h1 class="font-display-lg text-display-lg md:text-display-lg mb-8">
+                        I build full-stack systems that ship to real users.
+                    </h1>
+<p class="text-text-muted max-w-xl mb-10 text-lg leading-relaxed">
+                        Computer Science at Michigan State (’26). I work across the whole stack — from the ML model to the dashboard to the infrastructure it runs on — with a bias for software that has to actually work in production.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<a class="bg-cyber-lime text-background font-label-caps text-label-caps px-8 py-4 flex items-center gap-2 hover:opacity-90 transition-all" href="#work">
+                            SELECTED WORK <span class="material-symbols-outlined text-[18px]">south</span>
+</a>
+<a class="border border-border-subtle text-on-surface font-label-caps text-label-caps px-8 py-4 hover:border-electric-blue transition-all" href="#">
+                            DOWNLOAD RÉSUMÉ ↗
+                        </a>
+</div>
+</div>
+<div class="md:col-span-5 relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-cyber-lime to-electric-blue opacity-20 group-hover:opacity-40 transition duration-1000 blur"></div>
+<div class="relative bg-surface border border-border-subtle overflow-hidden">
+<img alt="Abhiyash Singh Headshot" class="w-full grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida/ADBb0uiJFzZkyv3UlKo97IrNUNOV-2s2u6snrtvQeVO-KPOLxaPK8g6S6CA5lasjX0Y9IRdOXGSXdqpfO-0R_ssY2i5GP6EDGq4xIgh2vludXicXVFLpZCVfhZEIHAjIGQUHGm4ackmd7iSbv1rAh0DbCEJrpwlTHR45lJtPGwCsIPHTnE7ub5GQJHsMTKkZy1nq2jOZs4w0zKJLmPFur5_Vll_N0ctXsvinlfb7usAW6KBrLAXBH8-Zr6BJGuLH"/>
+</div>
+<div class="absolute bottom-4 right-4 bg-surface border border-border-subtle p-3 backdrop-blur-md">
+<p class="font-code-sm text-code-sm text-on-surface">LOC: EAST LANSING, MI</p>
+<p class="font-code-sm text-code-sm text-text-muted">CS @ MSU '26</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Ticker -->
+<div class="border-y border-border-subtle py-4 bg-surface-raised overflow-hidden whitespace-nowrap mb-section-gap">
+<div class="flex animate-marquee gap-24 font-code-sm text-code-sm text-text-muted">
+<span>07 SHIPPED · 04 BUILDING</span>
+<span>OPEN TO 2026 NEW-GRAD ROLES</span>
+<span>FULL-STACK · ML · INFRASTRUCTURE</span>
+<span>07 SHIPPED · 04 BUILDING</span>
+<span>OPEN TO 2026 NEW-GRAD ROLES</span>
+<span>FULL-STACK · ML · INFRASTRUCTURE</span>
+</div>
+</div>
+<!-- Selected Work -->
+<section class="max-w-container-max mx-auto px-gutter mb-section-gap" id="work">
+<div class="flex justify-between items-end mb-12">
+<div>
+<span class="font-code-sm text-code-sm text-cyber-lime block mb-2 uppercase tracking-widest">✦ 01 Portfolio</span>
+<h2 class="font-headline-md text-headline-md uppercase">Selected Work</h2>
+</div>
+<a class="font-label-caps text-label-caps text-text-muted hover:text-cyber-lime transition-colors" href="#">SEE ALL WORK →</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Project 1 -->
+<div class="project-card border border-border-subtle bg-surface-raised p-2 transition-all duration-300 border-glow flex flex-col group">
+<div class="overflow-hidden mb-6 relative">
+<img alt="Predictive Maintenance Platform" class="project-image w-full aspect-video object-cover transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdT1VyzNBUByBuxzJ5JiFjO1qxtMvJ5mgQ5_ROem7mZ1O7AxI_1c55chWZq2Fs0LaPoK5B6lTbVxLlAOrD14ONv-f__AiIr61FwJuwdrHkCMVioUHMwCUalYKewwrmqvidOfHik6OwacNs9SRal8TcDFtSrFnsJoZwauLVrKNz6cqrcD7_kl5dxn0y0KLhFPDW9GNEyrKJFVCtHbkVV-zYSawUbYushgA0dwOT12cdnBkgOPMFG0lPylAZxiwWYXbjXlJIyCKN40cR"/>
+<div class="absolute top-4 left-4 bg-background/80 backdrop-blur-sm px-2 py-1 border border-border-subtle">
+<span class="font-code-sm text-code-sm text-electric-blue">01</span>
+</div>
+</div>
+<div class="px-4 pb-4 flex-1">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-md text-headline-md group-hover:text-cyber-lime transition-colors">Predictive Maintenance Platform</h3>
+<span class="material-symbols-outlined text-text-muted">north_east</span>
+</div>
+<p class="text-text-muted mb-6 line-clamp-2">Calling machine failures hours before the alarm would. Built for real coating plant constraints where downtime costs exceed tuition.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="font-code-sm text-code-sm bg-border-subtle px-2 py-1">NEXT.JS</span>
+<span class="font-code-sm text-code-sm bg-border-subtle px-2 py-1">TYPESCRIPT</span>
+<span class="font-code-sm text-code-sm bg-border-subtle px-2 py-1">ML</span>
+<span class="font-code-sm text-code-sm bg-border-subtle px-2 py-1">CHART.JS</span>
+</div>
+<div class="pt-4 border-t border-border-subtle flex justify-between items-center">
+<span class="font-code-sm text-code-sm text-text-muted">CAPSTONE TEAM OF 5</span>
+<span class="font-code-sm text-code-sm text-cyber-lime">2026</span>
+</div>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="project-card border border-border-subtle bg-surface-raised p-2 transition-all duration-300 border-glow flex flex-col group">
+<div class="overflow-hidden mb-6 relative">
+<img alt="CineMatch Movie Recommender" class="project-image w-full aspect-video object-cover transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFp42jZPEJai3RTYn8loKiYodD2zVbknKvzi_KCnU5tH1a9LyP2czugwa_oUlLgjRAy-QUGFGRSdCRvdSDu7sF18anBqeWyDwL59ffUMMVAgvkbv7VhIyRbXWl7Uqz5e52OqJR6P-aF9S0fXcIsiqQSPupiHaK4bQCogAlNPstgyEUjLZ7aIe54BLjRLOXfTkR__OfBmmjWTn_QFzDrhb-MLCcUa3dMFu5tRvaqDOkmAX0Sb-8y0mmU7cMT-l9XhsYL9_E9U4Z7NG1"/>
+<div class="absolute top-4 left-4 bg-background/80 backdrop-blur-sm px-2 py-1 border border-border-subtle">
+<span class="font-code-sm text-code-sm text-electric-blue">02</span>
+</div>
+</div>
+<div class="px-4 pb-4 flex-1">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-md text-headline-md group-hover:text-cyber-lime transition-colors">CineMatch — Recommender</h3>
+<span class="material-symbols-outlined text-text-muted">north_east</span>
+</div>
+<p class="text-text-muted mb-6 line-clamp-2">Collaborative filtering, evaluated honestly. A robust backend architecture designed for accuracy and high-speed retrieval.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="font-code-sm text-code-sm bg-border-subtle px-2 py-1">FASTAPI</span>
+<span class="font-code-sm text-code-sm bg-border-subtle px-2 py-1">REACT</span>
+<span class="font-code-sm text-code-sm bg-border-subtle px-2 py-1">SQLITE</span>
+<span class="font-code-sm text-code-sm bg-border-subtle px-2 py-1">VITE</span>
+</div>
+<div class="pt-4 border-t border-border-subtle flex justify-between items-center">
+<span class="font-code-sm text-code-sm text-text-muted">BACKEND + DATA (TEAM OF 4)</span>
+<span class="font-code-sm text-code-sm text-cyber-lime">2026</span>
+</div>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="project-card border border-border-subtle bg-surface-raised p-2 transition-all duration-300 border-glow flex flex-col group">
+<div class="overflow-hidden mb-6 relative">
+<img alt="Spartan Touchdown Game" class="project-image w-full aspect-video object-cover transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWVjok3Bs6jCmEcMASn5-AYpT2NJwh0KpBrInJzn94jNAGWW5Ta4vWlVP6ZkoyVXiFXQSK0k3wdCWNbvWZ4O9Uj9_JD0DOq5KvH6xeI2-ohZ9D0ZJJYaUvKWBtBhNSe3qTx0p2hSkJHz6pwHNzZXUWzp54MLcIAx_rNnVW3GBF1Q9ttHPFN-Ezz86ptIHn2pvA-f-OxHRHrs4wu86Zttg1PXmgHeifSb9VqqzeRCgP2DEyuHqoNVXrDW9kHxo_EnGhwfXx6GAMdLsW"/>
+<div class="absolute top-4 left-4 bg-background/80 backdrop-blur-sm px-2 py-1 border border-border-subtle">
+<span class="font-code-sm text-code-sm text-electric-blue">03</span>
+</div>
+</div>
+<div class="px-4 pb-4 flex-1">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-md text-headline-md group-hover:text-cyber-lime transition-colors">Spartan Touchdown</h3>
+<span class="material-symbols-outlined text-text-muted">north_east</span>
+</div>
+<p class="text-text-muted mb-6 line-clamp-2">A C++ game built like production software. Leveraging C++17 standards, rigorous testing, and CMake build automation.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="font-code-sm text-code-sm bg-border-subtle px-2 py-1">C++17</span>
+<span class="font-code-sm text-code-sm bg-border-subtle px-2 py-1">WXWIDGETS</span>
+<span class="font-code-sm text-code-sm bg-border-subtle px-2 py-1">GOOGLE TEST</span>
+<span class="font-code-sm text-code-sm bg-border-subtle px-2 py-1">CMAKE</span>
+</div>
+<div class="pt-4 border-t border-border-subtle flex justify-between items-center">
+<span class="font-code-sm text-code-sm text-text-muted">ENGINEER (TEAM OF 4)</span>
+<span class="font-code-sm text-code-sm text-cyber-lime">2025</span>
+</div>
+</div>
+</div>
+<!-- Project 4 -->
+<div class="project-card border border-border-subtle bg-surface-raised p-2 transition-all duration-300 border-glow flex flex-col group">
+<div class="overflow-hidden mb-6 relative">
+<img alt="AI Job-Application Copilot" class="project-image w-full aspect-video object-cover transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEYbpeeGZDWLnJHBFszbxpzRHb0PhREEKLzH4qUfxM8PGoNUm06swrt2GD2toPUtAsog-TpWaNhgNZ6Ja3Ljq_SvJ_rEpo3D6ZXlgEz8mIcsw-EagfgU0hCKfDBdaHeQjkxCBuU0g8_5rTsX0g96bRc-Q-R0rbXoOOYh9Nu2roiP7W1NjfmjfGm5yXuvxK9MUTnR5I7wPEkcVvZVscxwOqEJPueGhX9QsD2ltwvh9BgwYLVGlv4V_p47Irq_SnFg62DzEyqSx5g7C8"/>
+<div class="absolute top-4 left-4 bg-background/80 backdrop-blur-sm px-2 py-1 border border-border-subtle">
+<span class="font-code-sm text-code-sm text-electric-blue">04</span>
+</div>
+</div>
+<div class="px-4 pb-4 flex-1">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-md text-headline-md group-hover:text-cyber-lime transition-colors">AI Job-Application Copilot</h3>
+<span class="material-symbols-outlined text-text-muted">north_east</span>
+</div>
+<p class="text-text-muted mb-6 line-clamp-2">Tailors résumé bullets to a job — and grades itself. Integrating Claude API for intelligent parsing and pgvector for semantic search.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="font-code-sm text-code-sm bg-border-subtle px-2 py-1">NEXT.JS</span>
+<span class="font-code-sm text-code-sm bg-border-subtle px-2 py-1">CLAUDE API</span>
+<span class="font-code-sm text-code-sm bg-border-subtle px-2 py-1">PGVECTOR</span>
+<span class="font-code-sm text-code-sm bg-border-subtle px-2 py-1">EMBEDDINGS</span>
+</div>
+<div class="pt-4 border-t border-border-subtle flex justify-between items-center">
+<span class="font-code-sm text-code-sm text-electric-blue flex items-center gap-1">
+<span class="animate-pulse inline-block w-2 h-2 rounded-full bg-electric-blue"></span> BUILDING
+                            </span>
+<span class="font-code-sm text-code-sm text-cyber-lime">SOLO</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="bg-surface-raised border-y border-border-subtle py-section-gap" id="about">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+<div class="md:col-span-5">
+<span class="font-code-sm text-code-sm text-cyber-lime block mb-4 uppercase tracking-widest">✦ 02 Background</span>
+<h2 class="font-headline-md text-headline-md mb-8">THE UNGLAMOROUS PARTS OF BUILDING SOFTWARE.</h2>
+<div class="space-y-6 text-text-muted leading-relaxed">
+<p>I’m Abhiyash — a computer science engineer graduating from Michigan State University in August 2026.</p>
+<p>I like the unglamorous parts of building software: making a model trustworthy, a dashboard fast, an auth flow correct, a deploy boring.</p>
+</div>
+</div>
+<div class="md:col-span-7 flex flex-col justify-end">
+<div class="bg-background border border-border-subtle p-8 md:p-12 relative">
+<span class="material-symbols-outlined absolute top-8 right-8 text-cyber-lime text-4xl opacity-50" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<p class="text-xl md:text-2xl font-headline-md mb-6 leading-tight">
+                                "My senior capstone went into a real coatings plant where an hour of unplanned downtime costs more than a year of my tuition."
+                            </p>
+<p class="text-text-muted">
+                                Building under that constraint — software that someone is actually counting on — is how I like to work, and it’s the standard I hold the rest of my projects to.
+                            </p>
+<div class="mt-8">
+<a class="inline-flex items-center gap-2 font-label-caps text-label-caps text-on-surface hover:text-cyber-lime transition-colors" href="#">
+                                    MORE ABOUT ME <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="max-w-container-max mx-auto px-gutter py-section-gap" id="contact">
+<div class="text-center max-w-3xl mx-auto">
+<span class="font-code-sm text-code-sm text-cyber-lime block mb-4 uppercase tracking-widest">✦ 03 Contact</span>
+<h2 class="font-display-lg text-display-lg mb-12">LET’S BUILD SOMETHING THAT HAS TO WORK.</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-16">
+<a class="flex items-center justify-center gap-3 bg-surface-raised border border-border-subtle p-6 hover:border-cyber-lime transition-all group" href="mailto:abhiyash3101@gmail.com">
+<span class="material-symbols-outlined text-text-muted group-hover:text-cyber-lime">mail</span>
+<span class="font-code-sm text-code-sm">abhiyash3101@gmail.com</span>
+</a>
+<a class="flex items-center justify-center gap-3 bg-surface-raised border border-border-subtle p-6 hover:border-cyber-lime transition-all group" href="tel:+15172049389">
+<span class="material-symbols-outlined text-text-muted group-hover:text-cyber-lime">call</span>
+<span class="font-code-sm text-code-sm">+1 517 204 9389</span>
+</a>
+</div>
+<div class="flex flex-wrap justify-center gap-12 font-label-caps text-label-caps tracking-[0.2em]">
+<a class="hover:text-cyber-lime transition-colors" href="https://github.com/Abhiyash31">GITHUB</a>
+<a class="hover:text-cyber-lime transition-colors" href="https://www.linkedin.com/in/abhiyash-pratap-singh-947172219/">LINKEDIN</a>
+<a class="hover:text-cyber-lime transition-colors" href="#">TWITTER</a>
+<a class="hover:text-cyber-lime transition-colors" href="#">RÉSUMÉ</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="border-t border-border-subtle bg-surface">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter py-12 max-w-container-max mx-auto gap-base">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="font-label-caps text-label-caps text-on-surface">ABHIYASH SINGH</span>
+<p class="font-code-sm text-code-sm text-text-muted tracking-tighter">©2026 ABHIYASH PRATAP SINGH. ALL SYSTEMS OPERATIONAL.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-code-sm text-code-sm text-text-muted hover:text-electric-blue transition-all duration-300 ease-in-out" href="https://github.com/Abhiyash31">GITHUB</a>
+<a class="font-code-sm text-code-sm text-text-muted hover:text-electric-blue transition-all duration-300 ease-in-out" href="https://www.linkedin.com/in/abhiyash-pratap-singh-947172219/">LINKEDIN</a>
+<a class="font-code-sm text-code-sm text-cyber-lime hover:text-electric-blue transition-all duration-300 ease-in-out cursor-pointer" href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">BACK TO TOP ↑</a>
+</div>
+</div>
+</footer>
+<style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: fit-content;
+            animation: marquee 30s linear infinite;
+        }
+    </style>
+<script>
+        // Smooth reveal for sections
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-8');
+            observer.observe(section);
+        });
+
+        // Hover sound/haptic simulation
+        document.querySelectorAll('.project-card, button, a').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                // Potential placeholder for subtle audio feedback
+            });
+        });
+    </script>
+</body></html>

@@ -44,7 +44,7 @@ export function Footer() {
       ? [{ label: "LinkedIn", href: site.socials.linkedin, icon: <LinkedInIcon /> }]
       : []),
     { label: "Email", href: `mailto:${site.contact.emails[0]}`, icon: <MailIcon /> },
-    { label: "Résumé", href: site.socials.resume, icon: <DocIcon /> },
+    { label: "Resume", href: site.socials.resume, icon: <DocIcon /> },
   ];
 
   return (
@@ -54,7 +54,7 @@ export function Footer() {
           ✦ Contact
         </p>
         <h2 className="mt-6 max-w-3xl font-display text-3xl leading-[1.05] tracking-tight text-text sm:text-5xl">
-          Let’s build something that has to{" "}
+          Let&rsquo;s build something that has to{" "}
           <span className="italic text-accent">work</span>.
         </h2>
 
@@ -91,12 +91,18 @@ export function Footer() {
         </div>
 
         <div className="mt-20 flex flex-col gap-6 border-t border-line pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-mono text-sm uppercase tracking-[0.18em] text-muted">
-            © {year} {site.name}
-          </p>
+          <div className="flex flex-col gap-1.5">
+            <p className="font-mono text-sm uppercase tracking-[0.18em] text-muted">
+              © {year} {site.name}
+            </p>
+            <p className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-faint">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-signal" />
+              All systems operational
+            </p>
+          </div>
           <Link
             href="#top"
-            className="font-mono text-xs uppercase tracking-[0.18em] text-muted transition-colors hover:text-text"
+            className="font-mono text-xs uppercase tracking-[0.18em] text-muted transition-colors hover:text-accent"
           >
             Back to top ↑
           </Link>

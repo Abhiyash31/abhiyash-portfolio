@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Fraunces } from "next/font/google";
+import { Geist, JetBrains_Mono } from "next/font/google";
 import { site } from "@/content/site";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Cursor } from "@/components/Cursor";
@@ -8,19 +8,13 @@ import { Footer } from "@/components/Footer";
 import "./globals.css";
 
 const sans = Geist({ subsets: ["latin"], variable: "--font-geist-sans", display: "swap" });
-const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
-const display = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
-  display: "swap",
-  style: ["normal", "italic"],
-});
+const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.shortName} — ${site.role}`,
-    template: `%s — ${site.shortName}`,
+    default: `${site.shortName} · ${site.role}`,
+    template: `%s · ${site.shortName}`,
   },
   description: site.heroSub,
   keywords: [
@@ -35,13 +29,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: site.url,
-    title: `${site.shortName} — ${site.role}`,
+    title: `${site.shortName} · ${site.role}`,
     description: site.tagline,
     siteName: site.shortName,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.shortName} — ${site.role}`,
+    title: `${site.shortName} · ${site.role}`,
     description: site.tagline,
   },
   robots: { index: true, follow: true },
@@ -52,7 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${sans.variable} ${mono.variable} ${display.variable}`}
+      className={`${sans.variable} ${mono.variable}`}
     >
       <body className="hide-system-cursor antialiased">
         <div className="grain" aria-hidden />

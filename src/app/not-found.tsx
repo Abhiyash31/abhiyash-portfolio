@@ -10,7 +10,7 @@ export default function NotFound() {
         Nothing here.
       </h1>
       <p className="mt-5 max-w-sm text-muted">
-        This page doesn’t exist — but the work does.
+        This page doesn&rsquo;t exist, but the work does.
       </p>
       <Link
         href="/"

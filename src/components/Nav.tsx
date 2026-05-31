@@ -36,6 +36,11 @@ export function Nav() {
     }
   };
 
+  const isActive = (href: string) => {
+    if (href.startsWith("/#")) return false;
+    return pathname === href || (href !== "/" && pathname.startsWith(href));
+  };
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
@@ -44,23 +49,30 @@ export function Nav() {
           : "border-b border-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 sm:px-10">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-10">
         <Link
           href="/"
           onClick={goTo("/#top")}
-          className="font-mono text-xs uppercase tracking-[0.2em] text-text"
+          className="flex items-center gap-2.5 font-mono text-xs uppercase tracking-[0.18em] text-text"
         >
+          <span className="grid h-7 w-7 place-items-center rounded border border-line-strong text-accent">
+            A
+          </span>
           {site.shortName}
-          <span className="text-accent">.</span>
+          <span className="text-faint">v2.0</span>
         </Link>
 
-        <div className="hidden items-center gap-9 md:flex">
+        <div className="hidden items-center gap-8 md:flex">
           {site.nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={goTo(item.href)}
-              className="link-underline font-mono text-xs uppercase tracking-[0.18em] text-muted transition-colors hover:text-text"
+              className={`font-mono text-[11px] uppercase tracking-[0.18em] transition-colors ${
+                isActive(item.href)
+                  ? "border-b border-accent pb-1 text-accent"
+                  : "text-muted hover:text-text"
+              }`}
             >
               {item.label}
             </Link>
@@ -68,15 +80,21 @@ export function Nav() {
           <Link
             href={site.socials.resume}
             target="_blank"
-            className="rounded-full border border-line-strong px-4 py-1.5 font-mono text-xs uppercase tracking-[0.18em] text-text transition-colors hover:border-accent hover:text-accent"
+            className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-text"
           >
-            Résumé
+            Resume
           </Link>
+          <a
+            href={`mailto:${site.contact.emails[0]}`}
+            className="bg-accent px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-bg transition-all hover:opacity-80 active:scale-95"
+          >
+            Get in touch
+          </a>
         </div>
 
         <button
           onClick={() => setOpen((v) => !v)}
-          className="font-mono text-xs uppercase tracking-[0.2em] text-text md:hidden"
+          className="font-mono text-[11px] uppercase tracking-[0.2em] text-text md:hidden"
           aria-label="Toggle menu"
         >
           {open ? "Close" : "Menu"}
@@ -90,7 +108,7 @@ export function Nav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="flex h-[100dvh] flex-col justify-center gap-2 px-6 md:hidden"
+            className="flex h-[100dvh] flex-col justify-center gap-2 bg-bg px-6 md:hidden"
           >
             {site.nav.map((item, i) => (
               <motion.div
@@ -112,9 +130,9 @@ export function Nav() {
               href={site.socials.resume}
               target="_blank"
               onClick={() => setOpen(false)}
-              className="mt-6 font-mono text-xs uppercase tracking-[0.2em] text-accent"
+              className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-accent"
             >
-              Résumé ↗
+              Resume ↗
             </Link>
           </motion.div>
         )}

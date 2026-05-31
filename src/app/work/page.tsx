@@ -7,7 +7,7 @@ import { Reveal } from "@/components/Reveal";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Selected projects — capstone systems, full-stack builds, C++ games, and the AI work in progress.",
+    "Selected projects: capstone systems, full-stack builds, C++ games, and the AI work in progress.",
   alternates: { canonical: "/work" },
 };
 
@@ -35,7 +35,7 @@ export default function WorkIndexPage() {
             Projects that had to <span className="italic text-accent">work</span>.
           </h1>
           <p className="mt-5 max-w-2xl text-xl leading-relaxed text-muted">
-            Production systems, full-stack builds, and the AI work I’m heads-down on
+            Production systems, full-stack builds, and the AI work I&rsquo;m heads-down on
             through 2026. Each card opens a deeper case study.
           </p>
         </Reveal>
@@ -95,7 +95,7 @@ function Card({
           {cover ? (
             <Image
               src={cover}
-              alt={`${project.title} — cover artwork`}
+              alt={`${project.title}, cover artwork`}
               fill
               sizes="(max-width: 768px) 100vw, 480px"
               className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"

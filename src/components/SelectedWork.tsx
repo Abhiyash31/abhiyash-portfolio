@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import { projects, type Project } from "@/content/projects";
@@ -8,31 +9,37 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function SelectedWork() {
   const featured = projects.filter((p) => p.featured);
-  const totalShipped = projects.filter((p) => p.status === "shipped").length;
-  const totalBuilding = projects.filter((p) => p.status === "building").length;
 
   return (
     <section id="work" className="scroll-mt-24 px-6 py-28 sm:px-10 sm:py-36">
       <div className="mx-auto max-w-6xl">
         <div className="flex items-end justify-between border-b border-line pb-6">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-faint">
-            ✦ Selected Work
-          </p>
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-faint">
-            {String(totalShipped).padStart(2, "0")} shipped · {String(totalBuilding).padStart(2, "0")} building
-          </p>
+          <div>
+            <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent">
+              ✦ 01 / Selected work
+            </p>
+            <h2 className="mt-3 font-display text-2xl uppercase tracking-tight text-text sm:text-3xl">
+              Things I have shipped
+            </h2>
+          </div>
+          <Link
+            href="/work"
+            className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-accent sm:block"
+          >
+            See all work →
+          </Link>
         </div>
 
-        <ul>
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
           {featured.map((p, i) => (
-            <Row key={p.slug} project={p} index={i + 1} building={p.status === "building"} />
+            <Card key={p.slug} project={p} index={i + 1} />
           ))}
-        </ul>
+        </div>
 
         <div className="mt-14 flex justify-center">
           <Link
             href="/work"
-            className="group inline-flex items-center gap-3 rounded-full border border-line-strong px-6 py-3 font-mono text-xs uppercase tracking-[0.18em] text-text transition-colors hover:border-accent hover:text-accent"
+            className="group inline-flex items-center gap-3 border border-line-strong px-6 py-3 font-mono text-[11px] uppercase tracking-[0.18em] text-text transition-colors hover:border-accent hover:text-accent"
           >
             See all work
             <span className="transition-transform duration-300 group-hover:translate-x-1">
@@ -45,19 +52,13 @@ export function SelectedWork() {
   );
 }
 
-function Row({
-  project,
-  index,
-  building = false,
-}: {
-  project: Project;
-  index: number;
-  building?: boolean;
-}) {
+function Card({ project, index }: { project: Project; index: number }) {
   const reduce = useReducedMotion();
+  const building = project.status === "building";
+  const tags = project.stack.flatMap((g) => g.items).slice(0, 4);
 
   return (
-    <motion.li
+    <motion.div
       initial={reduce ? false : { opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
@@ -65,49 +66,61 @@ function Row({
     >
       <Link
         href={`/work/${project.slug}`}
-        className="group relative grid grid-cols-[auto_1fr] items-baseline gap-x-6 border-b border-line py-9 sm:grid-cols-[3rem_1fr_auto] sm:gap-x-10 sm:py-11"
+        className="border-glow group flex h-full flex-col border border-line bg-elevated p-2"
       >
-        <span className="absolute left-0 top-1/2 h-0 w-px -translate-y-1/2 bg-accent transition-all duration-500 group-hover:h-[60%]" />
+        <div className="relative aspect-video overflow-hidden">
+          {project.thumb ? (
+            <Image
+              src={project.thumb}
+              alt={project.title}
+              fill
+              sizes="(max-width: 768px) 100vw, 580px"
+              className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+            />
+          ) : (
+            <div className="absolute inset-0 bg-surface" />
+          )}
+          <span className="absolute left-3 top-3 border border-line bg-bg/80 px-2 py-1 font-mono text-[11px] text-blue backdrop-blur-sm">
+            {String(index).padStart(2, "0")}
+          </span>
+        </div>
 
-        <span className="font-mono text-sm text-faint transition-colors duration-300 group-hover:text-accent">
-          {String(index).padStart(2, "0")}
-        </span>
+        <div className="flex flex-1 flex-col p-4">
+          <div className="flex items-start justify-between gap-4">
+            <h3 className="font-display text-xl leading-tight text-text transition-colors group-hover:text-accent">
+              {project.title}
+            </h3>
+            <span className="mt-1 shrink-0 text-faint transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent">
+              ↗
+            </span>
+          </div>
 
-        <div className="min-w-0 sm:pl-2">
-          <h3 className="font-display text-xl leading-tight tracking-tight text-text transition-transform duration-500 ease-out group-hover:translate-x-2 sm:text-3xl">
-            {project.title}
-          </h3>
-          <p className="mt-3 max-w-xl text-lg text-muted">{project.tagline}</p>
+          <p className="mt-3 line-clamp-2 text-muted">{project.tagline}</p>
+
           <div className="mt-5 flex flex-wrap gap-2">
-            {project.stack.flatMap((g) => g.items).slice(0, 5).map((t) => (
+            {tags.map((t) => (
               <span
                 key={t}
-                className="rounded-full border border-line px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-muted"
+                className="bg-surface px-2 py-1 font-mono text-[11px] uppercase tracking-wider text-muted"
               >
                 {t}
               </span>
             ))}
           </div>
-        </div>
 
-        <div className="col-start-2 mt-6 flex items-center gap-5 sm:col-start-3 sm:mt-0 sm:flex-col sm:items-end sm:gap-3">
-          <span
-            className={`rounded-full px-3 py-1 font-mono text-[11px] uppercase tracking-wider ${
-              building
-                ? "border border-accent/40 text-accent"
-                : "border border-line text-muted"
-            }`}
-          >
-            {building ? "In progress" : project.year}
-          </span>
-          <span className="font-mono text-[11px] uppercase tracking-wider text-faint">
-            {project.role}
-          </span>
-          <span className="text-2xl text-faint transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent">
-            ↗
-          </span>
+          <div className="mt-5 flex items-center justify-between border-t border-line pt-4 font-mono text-[11px] uppercase tracking-wider">
+            <span className="text-faint">{project.role}</span>
+            {building ? (
+              <span className="flex items-center gap-1.5 text-blue">
+                <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-blue" />
+                Building
+              </span>
+            ) : (
+              <span className="text-accent">{project.year}</span>
+            )}
+          </div>
         </div>
       </Link>
-    </motion.li>
+    </motion.div>
   );
 }

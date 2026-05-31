@@ -49,7 +49,7 @@ export default function OpengraphImage() {
         </div>
 
         <div style={{ display: "flex", color: "#5f5f68", fontSize: 22 }}>
-          {site.location} — Michigan State University ’26
+          {site.location} · Michigan State University '26
         </div>
       </div>
     ),
