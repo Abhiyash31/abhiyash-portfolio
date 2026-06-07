@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { site } from "@/content/site";
 import { Reveal } from "@/components/Reveal";
 
@@ -30,6 +31,30 @@ export function About() {
                 →
               </span>
             </Link>
+          </Reveal>
+
+          <Reveal delay={0.15}>
+            <div className="group relative mt-12 w-full max-w-xs">
+              <div className="absolute -inset-px bg-gradient-to-br from-accent/40 via-transparent to-blue/40 opacity-30 blur-md transition-opacity duration-700 group-hover:opacity-60" />
+              <div className="relative aspect-[4/5] w-full overflow-hidden border border-line bg-bg">
+                <Image
+                  src="/headshot.jpg"
+                  alt={site.name}
+                  fill
+                  sizes="(max-width: 768px) 80vw, 320px"
+                  className="object-cover grayscale brightness-95 transition-all duration-700 ease-out group-hover:grayscale-0 group-hover:brightness-100"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg/60 via-transparent to-transparent" />
+                <div className="absolute bottom-3 right-3 border border-line bg-bg/80 px-3 py-2 backdrop-blur-md">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-text">
+                    Loc: East Lansing, MI
+                  </p>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-faint">
+                    CS @ MSU &rsquo;26
+                  </p>
+                </div>
+              </div>
+            </div>
           </Reveal>
         </div>
 

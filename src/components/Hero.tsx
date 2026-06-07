@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
+import { useEffect } from "react";
+import dynamic from "next/dynamic";
 import { useLenis } from "lenis/react";
 import {
   motion,
@@ -16,6 +16,10 @@ import { Magnetic } from "@/components/Magnetic";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
+const Robot3D = dynamic(() => import("@/components/Robot3D"), {
+  ssr: false,
+});
+
 export function Hero() {
   const lenis = useLenis();
   const reduce = useReducedMotion();
@@ -25,24 +29,6 @@ export function Hero() {
   const my = useMotionValue(0);
   const sx = useSpring(mx, { stiffness: 50, damping: 20, mass: 0.3 });
   const sy = useSpring(my, { stiffness: 50, damping: 20, mass: 0.3 });
-
-  const [time, setTime] = useState<string | null>(null);
-
-  useEffect(() => {
-    const update = () => {
-      setTime(
-        new Date().toLocaleTimeString("en-US", {
-          hour: "2-digit",
-          minute: "2-digit",
-          hour12: false,
-          timeZone: "America/New_York",
-        }),
-      );
-    };
-    update();
-    const id = setInterval(update, 30_000);
-    return () => clearInterval(id);
-  }, []);
 
   useEffect(() => {
     if (reduce) return;
@@ -144,8 +130,6 @@ export function Hero() {
             className="mt-9 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[11px] uppercase tracking-[0.2em] text-faint"
           >
             <span className="text-signal">Open to 2026 new-grad roles</span>
-            <span>·</span>
-            <span suppressHydrationWarning>{time ?? "--:--"} EST</span>
           </motion.div>
         </div>
 
@@ -153,28 +137,22 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: EASE, delay: 0.4 }}
-          className="group relative lg:col-span-5"
+          className="relative lg:col-span-5"
         >
-          <div className="absolute -inset-px bg-gradient-to-br from-accent/40 via-transparent to-blue/40 opacity-30 blur-md transition-opacity duration-700 group-hover:opacity-60" />
-          <div className="relative aspect-[4/5] overflow-hidden border border-line bg-surface">
-            <Image
-              src="/headshot.jpg"
-              alt={site.name}
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 420px"
-              className="object-cover grayscale brightness-95 transition-all duration-700 ease-out group-hover:grayscale-0 group-hover:brightness-100"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg/60 via-transparent to-transparent" />
-            <div className="absolute bottom-3 right-3 border border-line bg-bg/80 px-3 py-2 backdrop-blur-md">
-              <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-text">
-                Loc: East Lansing, MI
-              </p>
-              <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-faint">
-                CS @ MSU &rsquo;26
-              </p>
+          <div
+            className="pointer-events-none absolute inset-0 -z-10 opacity-60"
+            style={{
+              background:
+                "radial-gradient(ellipse at 50% 45%, rgba(204,255,0,0.12), transparent 65%)",
+            }}
+          />
+          {reduce ? (
+            <div className="aspect-[4/5] w-full" />
+          ) : (
+            <div className="relative h-[360px] sm:h-[440px] lg:h-[540px]">
+              <Robot3D />
             </div>
-          </div>
+          )}
         </motion.div>
       </div>
     </section>
