@@ -8,7 +8,7 @@ import { projects, type Project } from "@/content/projects";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function SelectedWork() {
-  const featured = projects.filter((p) => p.featured);
+  const featured = projects.filter((p) => p.featured && p.status === "shipped");
 
   return (
     <section id="work" className="scroll-mt-24 px-6 py-28 sm:px-10 sm:py-36">

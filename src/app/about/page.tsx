@@ -26,45 +26,44 @@ export default function AboutPage() {
         </Reveal>
 
         <Reveal delay={0.05}>
-          <p className="mt-12 font-mono text-xs uppercase tracking-[0.2em] text-accent">
+          <p className="mt-12 font-mono text-[11px] uppercase tracking-[0.22em] text-accent">
             ✦ About
           </p>
-          <h1 className="mt-6 font-display text-[1.8rem] leading-[1.05] tracking-tight text-text sm:text-5xl">
+          <h1 className="mt-6 font-display text-[2rem] uppercase leading-[1.04] tracking-tight text-text sm:text-5xl">
             Engineer who likes the <span className="italic text-accent">unglamorous</span> parts.
           </h1>
         </Reveal>
 
         <div className="mt-16 grid gap-14 md:grid-cols-[0.85fr_1.15fr] md:gap-20">
           <Reveal className="md:sticky md:top-28 md:self-start">
-            <div className="group relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl border border-line">
-              <Image
-                src="/headshot.jpg"
-                alt={site.name}
-                fill
-                sizes="(max-width: 768px) 100vw, 380px"
-                priority
-                className="object-cover grayscale brightness-[0.88] contrast-[1.08] transition-all duration-700 ease-out group-hover:grayscale-0 group-hover:brightness-100"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent opacity-70 transition-opacity duration-700 group-hover:opacity-30" />
-              <div
-                className="pointer-events-none absolute inset-0 mix-blend-color opacity-40 transition-opacity duration-700 group-hover:opacity-0"
-                style={{ background: "var(--color-accent)" }}
-              />
+            <div className="group relative">
+              <div className="absolute -inset-px bg-gradient-to-br from-accent/40 via-transparent to-blue/40 opacity-30 blur-md transition-opacity duration-700 group-hover:opacity-60" />
+              <div className="relative aspect-[4/5] w-full max-w-sm overflow-hidden border border-line bg-surface">
+                <Image
+                  src="/headshot.jpg"
+                  alt={site.name}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 380px"
+                  priority
+                  className="object-cover grayscale brightness-95 transition-all duration-700 ease-out group-hover:grayscale-0 group-hover:brightness-100"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg/60 via-transparent to-transparent" />
+              </div>
             </div>
-            <p className="mt-5 font-mono text-xs uppercase tracking-[0.18em] text-faint">
+            <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.2em] text-faint">
               {site.name} · {site.location}
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href={`mailto:${site.contact.emails[0]}`}
-                className="rounded-full border border-line-strong px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-text transition-colors hover:border-accent hover:text-accent"
+                className="bg-accent px-6 py-3 font-mono text-[11px] uppercase tracking-[0.16em] text-bg transition-all hover:opacity-90 active:scale-95"
               >
                 Email
               </a>
               <a
                 href={site.socials.resume}
                 target="_blank"
-                className="rounded-full border border-line px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-muted transition-colors hover:border-line-strong hover:text-text"
+                className="border border-line-strong px-6 py-3 font-mono text-[11px] uppercase tracking-[0.16em] text-text transition-colors hover:border-accent hover:text-accent"
               >
                 Resume ↗
               </a>
@@ -87,11 +86,11 @@ export default function AboutPage() {
             )}
 
             <Reveal delay={0.15}>
-              <div className="mt-12 border-t border-line pt-8">
-                <p className="font-mono text-xs uppercase tracking-[0.18em] text-faint">
-                  Education
+              <div className="mt-12 border border-line bg-elevated p-8">
+                <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent">
+                  ✦ Education
                 </p>
-                <p className="mt-3 text-lg text-text">
+                <p className="mt-4 text-lg text-text">
                   {education.degree}
                   <span className="text-muted"> · {education.school}</span>
                 </p>
@@ -106,23 +105,28 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="mt-28 border-t border-line pt-16">
+        <div className="mt-28">
           <Reveal>
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-faint">
-              ✦ Stack
-            </p>
+            <div className="flex items-end justify-between border-b border-line pb-5">
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent">
+                ✦ 01 / Stack
+              </p>
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-faint">
+                Tools I reach for
+              </p>
+            </div>
           </Reveal>
           <div className="mt-12 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             {skillGroups.map((group, i) => (
               <Reveal key={group.label} delay={i * 0.05}>
-                <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
+                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
                   {group.label}
                 </p>
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {group.items.map((item) => (
                     <li
                       key={item}
-                      className="rounded-full border border-line px-3.5 py-1.5 text-sm text-muted transition-colors hover:border-line-strong hover:text-text"
+                      className="bg-surface px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-muted transition-colors hover:text-text"
                     >
                       {item}
                     </li>
@@ -133,21 +137,26 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="mt-28 border-t border-line pt-16">
+        <div className="mt-28">
           <Reveal>
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-faint">
-              ✦ Experience
-            </p>
+            <div className="flex items-end justify-between border-b border-line pb-5">
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent">
+                ✦ 02 / Experience
+              </p>
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-faint">
+                Where I have worked
+              </p>
+            </div>
           </Reveal>
-          <div className="mt-12 flex flex-col">
+          <div className="mt-4 flex flex-col">
             {experience.map((job, i) => (
               <Reveal key={job.org} delay={i * 0.05}>
-                <div className="grid gap-x-10 gap-y-4 border-t border-line py-10 md:grid-cols-[14rem_1fr]">
+                <div className="grid gap-x-10 gap-y-4 border-b border-line py-10 md:grid-cols-[14rem_1fr]">
                   <div>
-                    <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-blue">
                       {job.period}
                     </p>
-                    <p className="mt-2 font-mono text-xs uppercase tracking-[0.16em] text-faint">
+                    <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.16em] text-faint">
                       {job.location}
                     </p>
                   </div>
@@ -168,8 +177,8 @@ export default function AboutPage() {
             ))}
 
             <Reveal delay={0.1}>
-              <div className="grid gap-x-10 gap-y-4 border-t border-line py-10 md:grid-cols-[14rem_1fr]">
-                <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted">
+              <div className="grid gap-x-10 gap-y-4 border-b border-line py-10 md:grid-cols-[14rem_1fr]">
+                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-blue">
                   Activities
                 </p>
                 <ul className="flex flex-col gap-3">

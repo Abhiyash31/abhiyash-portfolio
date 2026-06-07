@@ -5,14 +5,23 @@ import { useEffect, useRef, useState } from "react";
 import type { ProjectMedia as ProjectMediaType } from "@/content/projects";
 import { Reveal } from "@/components/Reveal";
 
-export function ProjectHero({ media, title }: { media?: ProjectMediaType; title: string }) {
-  if (!media?.cover) return null;
+export function ProjectHero({
+  media,
+  title,
+  fallback,
+}: {
+  media?: ProjectMediaType;
+  title: string;
+  fallback?: string;
+}) {
+  const src = media?.cover ?? fallback;
+  if (!src) return null;
   return (
     <Reveal delay={0.05}>
-      <div className="mt-12 overflow-hidden rounded-2xl border border-line">
-        <div className="relative aspect-[16/9] w-full bg-elevated">
+      <div className="mt-12 overflow-hidden border border-line bg-elevated p-2">
+        <div className="relative aspect-[16/9] w-full overflow-hidden">
           <Image
-            src={media.cover}
+            src={src}
             alt={`${title}, cover artwork`}
             fill
             sizes="(max-width: 1024px) 100vw, 960px"
@@ -34,7 +43,7 @@ export function ProjectGallery({ media }: { media?: ProjectMediaType }) {
         {media.gallery.map((g) => (
           <div
             key={g.src}
-            className="group relative overflow-hidden rounded-xl border border-line"
+            className="group relative overflow-hidden border border-line"
           >
             <div className="relative aspect-[16/10] w-full bg-elevated">
               <Image
@@ -81,7 +90,7 @@ export function ProjectVideo({ media }: { media?: ProjectMediaType }) {
   return (
     <Reveal className="mt-16">
       <p className="font-mono text-xs uppercase tracking-[0.2em] text-faint">In motion</p>
-      <div className="mt-6 overflow-hidden rounded-2xl border border-line bg-elevated">
+      <div className="mt-6 overflow-hidden border border-line bg-elevated">
         <video
           ref={ref}
           src={media.video.src}

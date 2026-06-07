@@ -142,6 +142,7 @@ export const projects: Project[] = [
     year: "2025",
     status: "shipped",
     featured: false,
+    thumb: "/work/thumbs/wordle.png",
     role: "Engineer",
     context: "CSE 335 · Object-Oriented Software Design",
     summary: "A Wordle-style desktop game in C++ / wxWidgets with a tested, CMake-built codebase.",
@@ -166,6 +167,7 @@ export const projects: Project[] = [
     year: "2025",
     status: "shipped",
     featured: false,
+    thumb: "/work/thumbs/auth-api.png",
     role: "Solo · coursework",
     context: "Database Systems · individual project",
     summary:
@@ -198,6 +200,7 @@ export const projects: Project[] = [
     year: "2025",
     status: "shipped",
     featured: false,
+    thumb: "/work/thumbs/recipes-api.png",
     role: "Solo · coursework",
     context: "Database Systems · individual project",
     summary:
@@ -230,6 +233,7 @@ export const projects: Project[] = [
     year: "2025",
     status: "shipped",
     featured: false,
+    thumb: "/work/thumbs/rideshare.png",
     role: "Solo · coursework",
     context: "Database Systems · individual project",
     summary:
@@ -290,6 +294,7 @@ export const projects: Project[] = [
     year: "2026",
     status: "building",
     featured: false,
+    thumb: "/work/thumbs/codebase-qa.png",
     role: "Solo · in progress",
     context: "Independent · applied AI",
     summary:
@@ -315,6 +320,7 @@ export const projects: Project[] = [
     year: "2026",
     status: "building",
     featured: false,
+    thumb: "/work/thumbs/realtime-collab.png",
     role: "Solo · in progress",
     context: "Independent · systems",
     summary:
@@ -339,6 +345,7 @@ export const projects: Project[] = [
     year: "2026",
     status: "building",
     featured: false,
+    thumb: "/work/thumbs/observability.png",
     role: "Solo · open source",
     context: "Independent · infrastructure",
     summary:

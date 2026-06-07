@@ -71,7 +71,7 @@ export default async function ProjectPage({
           </p>
         </Reveal>
 
-        <ProjectHero media={project.media} title={project.title} />
+        <ProjectHero media={project.media} title={project.title} fallback={project.thumb} />
 
         <Reveal delay={0.1}>
           <dl className="mt-12 grid grid-cols-2 gap-y-6 border-y border-line py-8 sm:grid-cols-4">
@@ -141,7 +141,7 @@ export default async function ProjectPage({
                   {g.items.map((it) => (
                     <span
                       key={it}
-                      className="rounded-full border border-line px-3 py-1 text-sm text-muted"
+                      className="bg-surface px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-muted"
                     >
                       {it}
                     </span>
@@ -160,7 +160,7 @@ export default async function ProjectPage({
                   key={l.label}
                   href={l.href}
                   target={l.href.startsWith("http") ? "_blank" : undefined}
-                  className="rounded-full border border-line-strong px-5 py-2.5 text-sm text-text transition-colors hover:border-accent hover:text-accent"
+                  className="border border-line-strong px-5 py-2.5 font-mono text-xs uppercase tracking-[0.16em] text-text transition-colors hover:border-accent hover:text-accent"
                 >
                   {l.label} ↗
                 </Link>
